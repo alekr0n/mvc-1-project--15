@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Event</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+</head>
+<body>
+    <h1>Add event or parties</h1>
+    <form action="/add-event" method="post">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="startDate">Start date:</label>
+        <input type="datetime-local" id="startDate" name="startDate" required>
+
+        <label for="endDate">End date:</label>
+        <input type="datetime-local" id="endDate" name="endDate" required>
+        <p>
+            <label for="guests">Guests:</label>
+        </p>
+        <ul id="guestsContainer">
+            <li>
+                <input type="text" id="guests" name="guests" required>
+            </li>
+        </ul>
+        
+        <button type="button" onclick="addGuestField()">Add guest</button>
+        
+        <input type="submit" value="Add event">
+    </form>
+
+    <script>
+        function addGuestField() {
+            const container = document.getElementById('guestsContainer');
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.name = 'guests';
+            input.placeholder = 'Guest name';
+            container.appendChild(input);
+        }
+    </script>
+</body>
+</html>
