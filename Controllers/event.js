@@ -15,13 +15,15 @@ router.get('/add-event', (req, res) => {
     res.render('addEvent');
 });
 
-router.get('/update-event', (req, res) => {
-    res.render('edit');
+router.get('/update-event/:id', (req, res) => {
+    const eventId = req.params.id;
+    const event = Event.getEventById(Number(eventId))
+    const pageTitle = req.params.title;
+
+    res.render('edit', { event: event, pageTitle: pageTitle });
 });
 
-router.post('/add-event', (req, res) => {
-    console.log(req.body);
-    
+router.post('/add-event', (req, res) => {    
     if (!req.body) {
         return res.status(400).send('No data received');
     }

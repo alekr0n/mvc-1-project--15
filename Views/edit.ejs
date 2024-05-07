@@ -3,25 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%=title%></title>
+    <title><%= pageTitle %></title> 
     <link rel="stylesheet" href="/public/css/style.css">
 </head>
 <body>
     <h1>Edit event</h1>
     <form action="/update-event/<%= event.id %>" method="post">
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title" value="<%= event.title %>" required>
-
-        <label for="startDate">From:</label>
-        <input type="datetime" id="startDate" name="startDate" value="<%= event.startDate %>" required>
-
-        <label for="endDate">Время:</label>
-        <input type="time" id="endDate" name="endDate" value="<%= event.endDate %>" required>
-
-        <label for="guests">Guests</label>
-        <input type="text" id="guests" name="guests" value="<%= event.guests %>" required>
-
+        <div>
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" value="<%= event.title %>" required>
+        </div>
+        <div>
+            <label for="startDate">From:</label>
+            <input type="datetime-local" id="startDate" name="startDate" value="<%= event.startDate %>" required>
+        </div>
+        <div>
+            <label for="endDate">To:</label>
+            <input type="datetime-local" id="endDate" name="endDate" value="<%= event.endDate %>" required>
+        </div>
+        <div>
+            <label for="guests">Guests:</label>
+            <ul>
+                <% event.guests.forEach(function(guest, index) { %>
+                    <li id="<%= index %>">
+                        <input type="text" name="guest" value="<%= guest %>" required>
+                        <button type="button" onclick="removeGuest(<%= index %>)">Remove</button>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
         <input type="submit" value="Save changes">
     </form>
+
+    <script>
+        function removeGuest(index) {
+            var el = document.getElementById(index);
+            el.remove();
+        }
+    </script>
 </body>
 </html>

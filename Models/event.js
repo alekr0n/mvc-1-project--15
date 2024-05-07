@@ -23,6 +23,9 @@ module.exports = {
         newEvent.id = events.length + 1;
         events.push(newEvent);
     },
+    getEventById: function(id) {
+        return events.find(event => event.id === id);
+    },
     updateEvent: function(id, updatedEvent) {
         events = events.map(event => {
             if (event.id === id) {

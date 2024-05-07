@@ -15,7 +15,16 @@
                 <div class="event-details">
                     <p><strong>From:</strong> <%= event.startDate %></p>
                     <p><strong>To:</strong> <%= event.endDate %></p>
-                    <p><strong>Guests:</strong> <%= event.guests %></p>
+                    <p><strong>Guests:</strong>
+                        <% if(typeof event.guests === "string") { %>
+                            <%= event.guests %> 
+                        <% } else { %>
+                            <% for(let i = 0; i < event.guests.length; i++) { %>
+                                <% if(i > 0 && i < event.guests.length) { %>, <% } %>
+                                <%= event.guests[i] %>
+                            <% } %>
+                        <% } %>
+                    </p>
                     <form action="/update-event/<%= event.id %>" method="get">
                         <button type="submit">Edit</button>
                     </form>

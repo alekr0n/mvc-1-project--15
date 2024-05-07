@@ -20,7 +20,7 @@
         <p>
             <label for="guests">Guests:</label>
         </p>
-        <ul id="guestsContainer">
+        <ul id="conteiner">
             <li>
                 <input type="text" id="guests" name="guests" required>
             </li>
@@ -33,12 +33,10 @@
 
     <script>
         function addGuestField() {
-            const container = document.getElementById('guestsContainer');
-            const input = document.createElement('input');
-            input.type = 'text';
-            input.name = 'guests';
-            input.placeholder = 'Guest name';
-            container.appendChild(input);
+            const conteiner = document.getElementById('conteiner')
+            let li = document.createElement('li');
+            li.innerHTML = '<input type="text" id="guests" name="guests" required>';
+            conteiner.appendChild(li);
         }
     </script>
 </body>
