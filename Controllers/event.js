@@ -38,7 +38,6 @@ router.post('/add-event', (req, res) => {
 router.post('/update-event/:id', (req, res) => {
     const id = parseInt(req.params.id);
     const { title, startDate, endDate, guests } = req.body;
-
     Event.updateEvent(id, { title, startDate, endDate, guests });
 
     res.redirect('/events');

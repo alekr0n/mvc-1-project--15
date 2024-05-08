@@ -26,7 +26,7 @@
             <ul>
                 <% event.guests.forEach(function(guest, index) { %>
                     <li id="<%= index %>">
-                        <input type="text" name="guest" value="<%= guest %>" required>
+                        <input type="text" name="guests" value="<%= guest %>" required>
                         <button type="button" onclick="removeGuest(<%= index %>)">Remove</button>
                     </li>
                 <% }); %>

@@ -2,8 +2,8 @@ let events = [
     {
         id: 1,
         title: "Sister's birthday",
-        startDate: '2024-05-14 18:00',
-        endDate: '2024-05-14 21:00',
+        startDate: '2024-05-14T18:00',
+        endDate: '2024-05-14T21:00',
         guests: ['Brother', 'Mam', 'Dad']
     },
     {
@@ -11,7 +11,7 @@ let events = [
         title: 'Trip to Tatry',
         startDate: '2024-06-07 10:00',
         endDate: '2024-06-14 18:00',
-        guests: ['Pioter', 'Maciej', 'Krzystof'],
+        guests: ['Pioter', 'Maciej', 'Krzystof']
     }
 ];
 
