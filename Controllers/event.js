@@ -51,4 +51,8 @@ router.post('/delete-event/:id', (req, res) => {
     res.redirect('/events');
 });
 
+router.post('/cancel', (req, res) =>{
+    res.redirect('/events');
+});
+
 module.exports = router;

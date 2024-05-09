@@ -20,23 +20,34 @@
         <p>
             <label for="guests">Guests:</label>
         </p>
-        <ul id="conteiner">
-            <li>
+        <ul id="container">
+            <li id="0">
                 <input type="text" id="guests" name="guests" required>
+                <button type="button" onclick="removeGuest(this.parentNode.id)">Remove</button>
             </li>
         </ul>
-        
-        <button type="button" onclick="addGuestField()">Add guest</button>
-        
-        <input type="submit" value="Add event">
+        <div>
+            <button type="button" onclick="addGuestField()">Add guest</button>
+        </div>
+        <input type="submit" value="Save event" style="margin-top: 15px">
+        <form action="/cancel>" method="post" style="display: inline-block;">
+            <button type="submit">Cancel</button>
+        </form>
     </form>
 
     <script>
+        let i=1;
         function addGuestField() {
-            const conteiner = document.getElementById('conteiner')
+            const container = document.getElementById('container')
             let li = document.createElement('li');
+            li.id = String(i++);
             li.innerHTML = '<input type="text" id="guests" name="guests" required>';
-            conteiner.appendChild(li);
+            li.innerHTML += '<button type="button" onclick="removeGuest(this.parentNode.id)">Remove</button>';
+            container.appendChild(li);
+        }
+        function removeGuest(index) {
+            var el = document.getElementById(index);
+            el.remove();
         }
     </script>
 </body>

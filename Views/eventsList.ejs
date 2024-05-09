@@ -12,8 +12,8 @@
         <div>
             <h3 class="event-title"><%= event.title %></h3>
             <div class="event-details">
-                <p><strong>From:</strong> <%= event.startDate %></p>
-                <p><strong>To:</strong> <%= event.endDate %></p>
+                <p><strong>From:</strong> <%= String(event.startDate).replace('T', ' ') %></p>
+                <p><strong>To:</strong> <%= String(event.endDate).replace('T', ' ') %></p>
                 <p><strong>Guests:</strong>
                     <% if(typeof event.guests === "string") { %>
                         <%= event.guests %> 
@@ -33,7 +33,7 @@
             </div>
         </div>
     <% }); %>
-    <form action="/add-event" method="get">
+    <form action="/add-event" method="get" style="margin-top: 15px">
         <button type="submit">Add event</button>
     </form>
 </body>

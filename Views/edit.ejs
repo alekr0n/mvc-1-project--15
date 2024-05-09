@@ -23,7 +23,7 @@
         </div>
         <div>
             <label for="guests">Guests:</label>
-            <ul>
+            <ul id="container">
                 <% event.guests.forEach(function(guest, index) { %>
                     <li id="<%= index %>">
                         <input type="text" name="guests" value="<%= guest %>" required>
@@ -31,11 +31,27 @@
                     </li>
                 <% }); %>
             </ul>
+            <div>
+                <button type="button" onclick="addGuestField()">Add guest</button>
+            </div>
         </div>
-        <input type="submit" value="Save changes">
+        <input type="submit" value="Save changes" style="margin-top: 15px">
+        <form action="/cancel>" method="post" style="display: inline-block;">
+            <button type="submit">Cancel</button>
+        </form>
     </form>
 
     <script>
+        let i = 0;
+        function addGuestField() {
+            const container = document.getElementById('container')
+            let li = document.createElement('li');
+            li.id = 'n' + String(i++);
+            li.innerHTML = '<input type="text" id="guests" name="guests" required>';
+            li.innerHTML += '<button type="button" onclick="removeGuest(this.parentNode.id)">Remove</button>';
+            container.appendChild(li);
+        }
+
         function removeGuest(index) {
             var el = document.getElementById(index);
             el.remove();
