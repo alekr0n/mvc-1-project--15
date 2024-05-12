@@ -6,7 +6,7 @@ const Event = require('../Models/event');
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
-router.get('/events', (req, res) => {
+router.get('/', (req, res) => {
     const events = Event.getAllEvents();
     res.render('eventsList', { events: events });
 });
@@ -32,7 +32,7 @@ router.post('/add-event', (req, res) => {
     
     Event.addEvent({ title, startDate, endDate, guests });
     
-    res.redirect('/events');
+    res.redirect('/');
 });
 
 router.post('/update-event/:id', (req, res) => {
@@ -40,7 +40,7 @@ router.post('/update-event/:id', (req, res) => {
     const { title, startDate, endDate, guests } = req.body;
     Event.updateEvent(id, { title, startDate, endDate, guests });
 
-    res.redirect('/events');
+    res.redirect('/');
 });
 
 router.post('/delete-event/:id', (req, res) => {
@@ -48,11 +48,7 @@ router.post('/delete-event/:id', (req, res) => {
 
     Event.deleteEvent(id);
 
-    res.redirect('/events');
-});
-
-router.post('/cancel', (req, res) =>{
-    res.redirect('/events');
+    res.redirect('/');
 });
 
 module.exports = router;
