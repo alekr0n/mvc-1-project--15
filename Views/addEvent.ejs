@@ -21,18 +21,16 @@
             <label for="guests">Guests:</label>
         </p>
         <ul id="container">
-            <li id="0">
+            <li class="list-item" id="0">
                 <input type="text" id="guests" name="guests" required>
-                <button type="button" onclick="removeGuest(this.parentNode.id)">Remove</button>
+                <button class="remove-btn" type="button" onclick="removeGuest(this.parentNode.id)">Remove</button>
             </li>
         </ul>
         <div>
-            <button type="button" onclick="addGuestField()">Add guest</button>
+            <button class="add-guest-btn" type="button" onclick="addGuestField()">Add guest</button>
         </div>
-        <input type="submit" value="Save event" style="margin-top: 15px">
-        <form action="/cancel>" method="post" style="display: inline-block;">
-            <button type="submit">Cancel</button>
-        </form>
+        <input type="submit" value="Save event">
+        <input class="delete-btn" style="margin-top: 15px;" type="button" onclick="history.back(); return false;" value="Cancel"/>
     </form>
 
     <script>
@@ -41,8 +39,9 @@
             const container = document.getElementById('container')
             let li = document.createElement('li');
             li.id = String(i++);
+            li.classList = "list-item";
             li.innerHTML = '<input type="text" id="guests" name="guests" required>';
-            li.innerHTML += '<button type="button" onclick="removeGuest(this.parentNode.id)">Remove</button>';
+            li.innerHTML += '<button class="remove-btn" type="button" onclick="removeGuest(this.parentNode.id)">Remove</button>';
             container.appendChild(li);
         }
         function removeGuest(index) {

@@ -9,36 +9,30 @@
 <body>
     <h1>Edit event</h1>
     <form action="/update-event/<%= event.id %>" method="post">
-        <div>
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title" value="<%= event.title %>" required>
-        </div>
-        <div>
-            <label for="startDate">From:</label>
-            <input type="datetime-local" id="startDate" name="startDate" value="<%= event.startDate %>" required>
-        </div>
-        <div>
-            <label for="endDate">To:</label>
-            <input type="datetime-local" id="endDate" name="endDate" value="<%= event.endDate %>" required>
-        </div>
-        <div>
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" value="<%= event.title %>" required>
+    
+        <label for="startDate">From:</label>
+        <input type="datetime-local" id="startDate" name="startDate" value="<%= event.startDate %>" required>
+    
+        <label for="endDate">To:</label>
+        <input type="datetime-local" id="endDate" name="endDate" value="<%= event.endDate %>" required>
+        <p>
             <label for="guests">Guests:</label>
-            <ul id="container">
-                <% event.guests.forEach(function(guest, index) { %>
-                    <li id="<%= index %>">
-                        <input type="text" name="guests" value="<%= guest %>" required>
-                        <button type="button" onclick="removeGuest(<%= index %>)">Remove</button>
-                    </li>
-                <% }); %>
-            </ul>
-            <div>
-                <button type="button" onclick="addGuestField()">Add guest</button>
-            </div>
+        </p>
+        <ul id="container">
+            <% event.guests.forEach(function(guest, index) { %>
+                <li class="list-item" id="<%= index %>">
+                    <input type="text" name="guests" value="<%= guest %>" required>
+                    <button class="remove-btn" type="button" onclick="removeGuest(<%= index %>)">Remove</button>
+                </li>
+            <% }); %>
+        </ul>
+        <div>
+            <button class="add-guest-btn" type="button" onclick="addGuestField()">Add guest</button>
         </div>
         <input type="submit" value="Save changes" style="margin-top: 15px">
-        <form action="/cancel>" method="post" style="display: inline-block;">
-            <button type="submit">Cancel</button>
-        </form>
+        <input class="delete-btn" style="margin-top: 15px;" type="button" onclick="history.back(); return false;" value="Cancel"/>
     </form>
 
     <script>
@@ -47,11 +41,11 @@
             const container = document.getElementById('container')
             let li = document.createElement('li');
             li.id = 'n' + String(i++);
+            li.classList = "list-item";
             li.innerHTML = '<input type="text" id="guests" name="guests" required>';
-            li.innerHTML += '<button type="button" onclick="removeGuest(this.parentNode.id)">Remove</button>';
+            li.innerHTML += '<button class="remove-btn" type="button" onclick="removeGuest(this.parentNode.id)">Remove</button>';
             container.appendChild(li);
         }
-
         function removeGuest(index) {
             var el = document.getElementById(index);
             el.remove();

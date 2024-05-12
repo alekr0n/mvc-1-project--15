@@ -15,7 +15,23 @@ li {
     border: 1px solid #ccc;
     padding: 10px;
 }
+.allEvents{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.eventEl {
+    min-width:min-content;
+    width: 250px;
+    outline-style: solid;
+    outline-offset: 10px;
+    outline-width: 1px;
+    outline-color: black;
+    margin: 15px;
+    margin-bottom: 35px;
+}
 .event-title {
+    text-align: center;
     font-size: 20px;
     font-weight: bold;
 }
@@ -44,6 +60,7 @@ textarea {
 input[type="submit"] {
     background-color: #4CAF50;
     color: white;
+    margin-top: 15px;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
@@ -52,4 +69,74 @@ input[type="submit"] {
 }
 input[type="submit"]:hover {
     background-color: #45a049;
+}
+.add-event-btn{
+    background-color: #4CAF50;
+    color: white;
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.add-event-btn:hover{
+    background-color: #45a049;
+}
+.edit{
+    display: inline-block;
+    float: left;
+}
+.edit-btn{
+    background-color: coral;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.edit-btn:hover{
+    background-color: rgb(216, 107, 68);
+}
+.delete{
+    display: inline-block;
+    float: right;
+}
+.delete-btn{
+    background-color:crimson;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.delete-btn:hover{
+    background-color:rgb(185, 16, 50);
+}
+.remove-btn{
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+    margin-left: 3px;
+    background-color: #ccc;
+    margin-bottom: 15px;
+}
+.remove-btn:hover{
+    background-color: rgb(177, 176, 176);
+}
+.list-item{
+    display: flex;
+    border: none;
+    margin-top: -18px;
+    margin-bottom: -18px;
+}
+.add-guest-btn{
+    border: none;
+    background-color: #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    margin-left: 10px;
+    margin-bottom: 15px;
+}
+.add-guest-btn:hover{
+    background-color: rgb(177, 176, 176);
 }
