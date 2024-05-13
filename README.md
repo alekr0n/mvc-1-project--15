@@ -29,6 +29,7 @@
 1. Zainstaluj cały repazitorium.
 2. Otwórz go w [Vizual Studio Code](https://code.visualstudio.com/).
 3. Otwórz terminal lub consol i upewnij się że jesteś w folderze zainstalowanego repazitoriuma. (Powinno to wyglądać naprzykład tak: PS D:\Documents\mvc-1-project-15>)
-4. Wpisz do terminalu: node app.js.
-5. Za chwilę napisze ci że server jest uruchomiany z portem 3000.
-6. Wejdz do przęglądarki i wpisz: "http://localhost:3000/" albo "localhost:3000".
+4. Wpisz do terminalu "npm install express ejs" i zachekaj kilka minut do sukcesji.
+5. Wpisz do terminalu: "node app.js".
+6. Za chwilę napisze ci że server jest uruchomiany z portem 3000.
+7. Wejdz do przęglądarki i wpisz: "http://localhost:3000/" albo "localhost:3000".
