@@ -16,36 +16,46 @@ router.get('/add-event', (req, res) => {
 });
 
 router.get('/update-event/:id', (req, res) => {
-    const eventId = req.params.id;
-    const event = Event.getEventById(Number(eventId))
-    const pageTitle = req.params.title;
+    const eventId = parseInt(req.params.id, 10); // Преобразуем id в число
+    const event = Event.getEventById(eventId);
+
+    if (!event) {
+        return res.status(404).send('Event not found');
+    }
+
+    const pageTitle = event.title || 'Edit Event';
 
     res.render('edit', { event: event, pageTitle: pageTitle });
 });
 
-router.post('/add-event', (req, res) => {    
+router.post('/add-event', (req, res) => {
     if (!req.body) {
         return res.status(400).send('No data received');
     }
     
     const { title, startDate, endDate, guests } = req.body;
-    
-    Event.addEvent({ title, startDate, endDate, guests });
+
+    const guestsArray = Array.isArray(guests) ? guests : [guests];
+
+    Event.addEvent({ title, startDate, endDate, guests: guestsArray });
     
     res.redirect('/');
 });
 
 router.post('/update-event/:id', (req, res) => {
-    const id = parseInt(req.params.id);
+    const id = parseInt(req.params.id, 10); // Преобразуем id в число
     const { title, startDate, endDate, guests } = req.body;
-    Event.updateEvent(id, { title, startDate, endDate, guests });
+
+    const guestsArray = Array.isArray(guests) ? guests : [guests];
+
+    Event.updateEvent(id, { title, startDate, endDate, guests: guestsArray });
+
 
     res.redirect('/');
 });
 
 router.post('/delete-event/:id', (req, res) => {
-    const id = parseInt(req.params.id);
-
+    const id = parseInt(req.params.id, 10); // Преобразуем id в число
     Event.deleteEvent(id);
 
     res.redirect('/');

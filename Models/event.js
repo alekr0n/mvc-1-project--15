@@ -9,8 +9,8 @@ let events = [
     {
         id: 2,
         title: 'Trip to Tatry',
-        startDate: '2024-06-07 10:00',
-        endDate: '2024-06-14 18:00',
+        startDate: '2024-06-07T10:00',
+        endDate: '2024-06-14T18:00',
         guests: ['Pioter', 'Maciej', 'Krzystof']
     }
 ];
